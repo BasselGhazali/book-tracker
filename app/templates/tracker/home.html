@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% for book in books %}
+            <div class="col-md-4">
+                <img src="static/img/{{book.image}}" alt="book-img" class="book-icon">
+                <h4> {{ book.title }} </h4>
+                <p> {{ book.author }} </p>
+                <p> {{ book.price }} AED </p>
+                <p> <a href="{{ url_for('main.display_publisher', publisher_id = book.pub_id) }}"> {{ book.pub_id }} </a></p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+{% block head %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+        <title> Bambi's Books </title>
+    </head>
+{% endblock head %}
+
+{% block body %}
+    <body>
+        <div>
+            {% block navbar %}
+                <nav class="navbar navbar-inverse">
+                    <div class="container">
+                        <a class="navbar navbar-text" href="{{ url_for('main.display_books') }}">
+                            <h3> Bambi's Books </h3>
+                        </a>
+
+                        <ul class="nav navbar-nav pull-right">
+                            <li> <a href=""> Home </a></li>
+                            <li> <a href=""> Register </a></li>
+                            <li> <a href=""> Sign In </a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            {% endblock navbar %}
+
+            {% block content %} {% endblock content %}
+
+            {% block footer %}
+                <footer>
+                    <div class="container">
+                        <hr>
+                        <p class="text-center small"> Bambi's Books | 2022</p>
+                    </div>
+                </footer>
+            {% endblock footer %}
+
+        </div>
+    </body>
+{% endblock body %}
+
+</html>
