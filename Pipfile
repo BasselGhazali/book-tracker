@@ -9,6 +9,8 @@ psycopg2-binary = "*"
 flask-sqlalchemy = "*"
 flask-bootstrap = "*"
 flask-wtf = "*"
+flask-login = "*"
+flask-bcrypt = "*"
 
 [dev-packages]
 

@@ -2,7 +2,14 @@ from flask import render_template, request
 from app.auth.forms import RegistrationForm
 from app.auth import authentication as at
 
-@at.route('/register')
+
+@at.route('/register', methods=['GET', 'POST'])
 def register_user():
+    name, email = None, None
     form = RegistrationForm()
-    return render_template('registration.html', form=form)
+
+    if request.method == 'POST':
+        name = form.name.data
+        email = form.email.data
+
+    return render_template('registration.html', form=form, name=name, email=email)

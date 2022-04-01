@@ -24,4 +24,11 @@
         </div>
 
     </form>
+
+    <br>
+    {% if name and email %}
+        <p> Hello {{ name }} </p>
+        <p> Your email is {{ email }} </p>
+    {% endif %}
+
 {% endblock %}
