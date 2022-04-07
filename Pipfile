@@ -11,6 +11,8 @@ flask-bootstrap = "*"
 flask-wtf = "*"
 flask-login = "*"
 flask-bcrypt = "*"
+werkzeug = "==2.0.0"
+email-validator = "*"
 
 [dev-packages]
 
