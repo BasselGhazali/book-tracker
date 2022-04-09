@@ -1,3 +1,5 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
 <!doctype html>
 <html lang="en">
 
@@ -32,6 +34,13 @@
                     </div>
                 </nav>
             {% endblock navbar %}
+
+            {% for message in get_flashed_messages() %}
+                <div class="container alert alert-info">
+                    <button type="button" class="btn" data-bs-dismiss="alert"> Dismiss </button>
+                    {{ message }}
+                </div>
+            {% endfor %}
 
             {% block content %} {% endblock content %}
 
