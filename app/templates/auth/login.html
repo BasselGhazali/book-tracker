@@ -1,1 +1,11 @@
 {% extends 'layout.html' %}
+
+{% block title %} Sign In {% endblock %}
+
+{% block content %}
+    <div>
+        <h4> Login</h4>
+        <hr><br>
+        {{ wtf.quick_form(form) }}
+    </div>
+{% endblock content %}
