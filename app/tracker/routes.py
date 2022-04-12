@@ -1,7 +1,8 @@
 from app.tracker import main
 from app import db
 from app.tracker.models import Book, Publication
-from flask import render_template
+from flask import render_template, flash, request, redirect, url_for
+from flask_login import login_required
 
 
 @main.route('/')
@@ -16,3 +17,15 @@ def display_publisher(publisher_id):
     publisher_books = Book.query.filter_by(pub_id=publisher.id).all()
 
     return render_template('publisher.html', publisher=publisher, publisher_books=publisher_books)
+
+
+@main.route('/delete/<book_id>', methods=['GET', 'POST'])
+@login_required
+def delete_book(book_id):
+    book = Book.query.get(book_id)
+    if request.method == 'POST':
+        db.session.delete(book)
+        db.session.commit()
+        flash('{} has been deleted').format(book)
+        return redirect(url_for('main.display_books'))
+    return render_template('delete_book.html', book=book, book_id=book.id)

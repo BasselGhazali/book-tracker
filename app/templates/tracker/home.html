@@ -10,6 +10,11 @@
                 <p> {{ book.author }} </p>
                 <p> {{ book.price }} AED </p>
                 <p> <a href="{{ url_for('main.display_publisher', publisher_id = book.pub_id) }}"> {{ book.pub_id }} </a></p>
+                <span class="label label-info">
+                    <a href="{{ url_for('main.delete_book', book_id=book.id) }}">
+                        Delete
+                    </a>
+                </span>
                 {% endfor %}
             </div>
         </div>

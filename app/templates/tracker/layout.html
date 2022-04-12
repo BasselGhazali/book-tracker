@@ -26,9 +26,13 @@
                         </a>
 
                         <ul class="nav navbar-nav pull-right">
-                            <li> <a href=""> Home </a></li>
-                            <li> <a href=""> Register </a></li>
-                            <li> <a href=""> Sign In </a></li>
+                            <li> <a href="{{ url_for('main.display_books') }}"> Home </a></li>
+                            {% if current_user.is_authenticated %}
+                                <li> <a href="{{ url_for('authentication.log_out_user') }}"> Sign Out </a></li>
+                            {% else %}
+                            <li> <a href="{{ url_for('authentication.register_user') }}"> Register </a></li>
+                            <li> <a href="{{ url_for('authentication.log_in_user') }}"> Sign In </a></li>
+                            {% endif %}
                         </ul>
 
                     </div>

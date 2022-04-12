@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <h4> Delete book? </h4>
+        <hr>
+        <img src="../static/img/{{book.image}}" alt="book-img" class="book-icon">
+        <p>
+            {{ book.title }} <br>
+            {{ book.author }}
+        </p>
+        <br>
+        <form action="{{ url_for('main.delete_book', book_id=book.id) }}" method="POST">
+            <button type="submit" class="btn btn-sm btn-primary"> Delete </button>
+        </form>
+    </div>
+{% endblock %}
