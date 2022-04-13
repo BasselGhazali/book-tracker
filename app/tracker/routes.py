@@ -1,6 +1,7 @@
 from app.tracker import main
 from app import db
 from app.tracker.models import Book, Publication
+from app.tracker.forms import EditBookForm
 from flask import render_template, flash, request, redirect, url_for
 from flask_login import login_required
 
@@ -29,3 +30,24 @@ def delete_book(book_id):
         flash('{} has been deleted').format(book)
         return redirect(url_for('main.display_books'))
     return render_template('delete_book.html', book=book, book_id=book.id)
+
+
+@main.route('/edit/book/<book_id>', methods=['GET', 'POST'])
+@login_required
+def edit_book(book_id):
+    book = Book.query.get(book_id)
+    form = EditBookForm(obj=book)
+
+    if form.validate_on_submit():
+        book.title = form.title.data
+        book.author = form.author.data
+        book.price = form.price.data
+        book.image = form.image.data
+
+        db.session.add(book)
+        db.session.commit()
+
+        flash('Book changed successfully')
+        return redirect(url_for('main.display_books'))
+
+    return render_template('edit_book.html', form=form)
