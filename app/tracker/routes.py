@@ -1,7 +1,7 @@
 from app.tracker import main
 from app import db
 from app.tracker.models import Book, Publication
-from app.tracker.forms import EditBookForm
+from app.tracker.forms import EditBookForm, CreateBookForm, AddBookForm
 from flask import render_template, flash, request, redirect, url_for
 from flask_login import login_required
 
@@ -51,3 +51,28 @@ def edit_book(book_id):
         return redirect(url_for('main.display_books'))
 
     return render_template('edit_book.html', form=form)
+
+
+# @main.route('/create/book/<pub_id>', methods=['GET', 'POST'])
+# @login_required
+# def create_book(pub_id):
+#     form = CreateBookForm()
+#     pub_form = AddBookForm()
+#
+#     pub_form.pub_id.data = pub_id
+#
+#     if form.validate_on_submit():
+#         book = Book(title=form.title.data,
+#                     author=form.author.data,
+#                     image=form.image.data,
+#                     tags=form.tags.data,
+#                     vendors=form.vendors.data,
+#                     genre=form.genre.data)
+#
+#         db.session.add(book)
+#         db.session.commit
+#
+#         flash('Book added successfully')
+#         return redirect(url_for('main.display_publisher'), publisher_id=pub_id)
+#
+#     return render_template(url_for('create_book.html', form=form, pub_id=pub_id))

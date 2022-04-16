@@ -3,6 +3,17 @@
 {% block content %}
     <div class="container">
         <div class="row">
+            {#
+<!--            <div class="col-md-4">-->
+<!--                <img src="static/img/LtaYP.svg" alt="book-img" class="book-icon">-->
+<!--                <span class="label label-primary">-->
+<!--&lt;!&ndash;TODO: add way for user to create book from here by inputting pub id&ndash;&gt;-->
+<!--                    <a href="{{ url_for('main.add_book', pub_id=pub_id) }}">-->
+<!--                        New Book-->
+<!--                    </a>-->
+<!--                </span>-->
+<!--            </div>-->
+            #}
             {% for book in books %}
             <div class="col-md-4">
                 <img src="static/img/{{book.image}}" alt="book-img" class="book-icon">
