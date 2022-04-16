@@ -7,9 +7,4 @@ if __name__ == '__main__':
     with flask_app.app_context():
         db.create_all()
 
-        if not User.query.filter_by(user_name="bambi").first():
-            User.create_user(user="bambi",
-                             email="abadareem@gmail.com",
-                             password="squishyfos")
-
     flask_app.run()
